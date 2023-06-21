@@ -9,7 +9,12 @@ group = 'com.mzdevelopers'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	asciidoctorExtensions
+}
 
 repositories {
 	mavenCentral()
@@ -18,13 +23,10 @@ repositories {
 ext {
 	set('snippetsDir', file("build/generated-snippets"))
 }
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	asciidoctorExtensions
-}
+//
+//configurations {
+//
+//}
 
 dependencies {
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc' // API 문서화
@@ -44,20 +46,17 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+task testWithSnippets(type: Test) {
 	outputs.dir snippetsDir
 	useJUnitPlatform()
 }
 
 tasks.named('asciidoctor') {
-	configurations "asciidoctorExtensions"
+	dependsOn testWithSnippets
 	inputs.dir snippetsDir
-	dependsOn test
 }
-
 task copyDocument(type: Copy) {
 	dependsOn asciidoctor
-	println "asciidoctor output: ${asciidoctor.outputDir}"
 	from file("${asciidoctor.outputDir}")
 	into file("src/main/resources/static/docs")
 }
@@ -66,9 +65,10 @@ build {
 	dependsOn copyDocument
 }
 
+// (10)
 bootJar {
 	dependsOn copyDocument
 	from ("${asciidoctor.outputDir}") {
-		into 'src/main/resources/static/docs'
+		into 'static/docs'
 	}
 }
