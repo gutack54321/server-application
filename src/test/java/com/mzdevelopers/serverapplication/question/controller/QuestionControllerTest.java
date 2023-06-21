@@ -478,6 +478,15 @@ class QuestionControllerTest {
                 .andExpect(jsonPath("$[1].tags[1].tagName").value("tag2"))
                 .andExpect(jsonPath("$[1].tags[1].tagDescription").value("tag2"))
                 .andDo(document("get-questions-by-api",
+                        getRequestPreProcessor(),
+                        getResponsePreProcessor(),
+                        pathParameters(
+                                parameterWithName("api").description("recent, votes, solutions 중 하나")
+                        ),
+                        requestParameters(
+                                parameterWithName("page").description("페이지 번호"),
+                                parameterWithName("size").description("페이지 크기")
+                        ),
                         responseFields(
                                 fieldWithPath("[].questionId").type(JsonFieldType.NUMBER).description("질문 식별자(고유 번호)"),
                                 fieldWithPath("[].title").type(JsonFieldType.STRING).description("질문 제목"),
