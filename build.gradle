@@ -9,24 +9,19 @@ group = 'com.mzdevelopers'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	asciidoctorExtensions
-}
-
 repositories {
 	mavenCentral()
 }
 
+// (2)
 ext {
 	set('snippetsDir', file("build/generated-snippets"))
 }
-//
-//configurations {
-//
-//}
+
+// (3)
+configurations {
+	asciidoctorExtensions
+}
 
 dependencies {
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc' // API 문서화
@@ -36,7 +31,6 @@ dependencies {
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'    //
 	implementation 'com.google.code.gson:gson'							 //
 	implementation 'org.springframework.restdocs:spring-restdocs-core:2.0.7.RELEASE' // 스니펫 작성시 오류로
-
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
@@ -46,29 +40,34 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-task testWithSnippets(type: Test) {
+// (6)
+tasks.named('test') {
 	outputs.dir snippetsDir
 	useJUnitPlatform()
 }
 
+// (7)
 tasks.named('asciidoctor') {
-	dependsOn testWithSnippets
+	configurations "asciidoctorExtensions"
 	inputs.dir snippetsDir
+	dependsOn test
 }
+
+// (8)
 task copyDocument(type: Copy) {
-	dependsOn asciidoctor
-	from file("${asciidoctor.outputDir}")
-	into file("src/main/resources/static/docs")
+	dependsOn asciidoctor            // (8-1)
+	from file("${asciidoctor.outputDir}")   // (8-2)
+	into file("src/main/resources/static/docs")   // (8-3)
 }
 
 build {
-	dependsOn copyDocument
+	dependsOn copyDocument  // (9)
 }
 
 // (10)
 bootJar {
-	dependsOn copyDocument
-	from ("${asciidoctor.outputDir}") {
-		into 'static/docs'
+	dependsOn copyDocument    // (10-1)
+	from ("${asciidoctor.outputDir}") {  // (10-2)
+		into 'static/docs'     // (10-3)
 	}
 }
