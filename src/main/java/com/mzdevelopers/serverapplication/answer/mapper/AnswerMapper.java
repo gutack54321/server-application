@@ -4,10 +4,11 @@ import com.mzdevelopers.serverapplication.answer.dto.AnswerDto;
 import com.mzdevelopers.serverapplication.answer.entity.Answer;
 import com.mzdevelopers.serverapplication.question.entity.Question;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",  unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AnswerMapper {
     default Answer answerPostToAnswer(AnswerDto.Post requestBody){
         Answer answer =new Answer();
