@@ -48,9 +48,14 @@ tasks.named('test') {
 
 // (7)
 tasks.named('asciidoctor') {
-	configurations "asciidoctorExtensions"
-	inputs.dir snippetsDir
 	dependsOn test
+	inputs.dir snippetsDir
+	doLast {
+		copy {
+			from snippetsDir
+			into asciidoctor.outputDir
+		}
+	}
 }
 
 // (8)
