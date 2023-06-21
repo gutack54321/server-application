@@ -689,8 +689,8 @@ Content-Length: 653
     } ],
     "memberId" : 0
   } ],
-  "createdAt" : "2023-06-21T14:55:58.478388",
-  "updatedAt" : "2023-06-21T14:55:58.478399"
+  "createdAt" : "2023-06-21T15:08:23.029445",
+  "updatedAt" : "2023-06-21T15:08:23.029467"
 }</code></pre>
 </div>
 </div>
@@ -912,8 +912,8 @@ Content-Length: 651
     } ],
     "memberId" : 0
   } ],
-  "createdAt" : "2023-06-21T14:55:58.494399",
-  "updatedAt" : "2023-06-21T14:55:58.494415"
+  "createdAt" : "2023-06-21T15:08:23.048147",
+  "updatedAt" : "2023-06-21T15:08:23.048166"
 }</code></pre>
 </div>
 </div>
@@ -1116,13 +1116,48 @@ Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">path-parameters</div>
-<p>Unresolved directive in index.adoc - include::/Users/gimjun-yeong/codestates/server-application/build/generated-snippets/get-questions-by-api/path-parameters.adoc[]</p>
-</div>
-<div class="paragraph">
-<p>API = {recent, votes, solutions} 이 세 가지중 하나를 고르셔야합니다.</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. /questions/{api}</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recent, votes, solutions 중 하나</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. request-parameters</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">페이지 번호</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">페이지 크기</p></td>
+</tr>
+</tbody>
+</table>
 <div class="listingblock">
 <div class="title">http-response</div>
 <div class="content">
@@ -1131,13 +1166,73 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json
-Content-Length: 947
+Content-Length: 1308
 
-[{"questionId":1,"title":"title","detail":"detail","solutionStatus":false,"answerCount":0,"votesCount":0,"viewCount":0,"memberId":1,"tags":[{"tagName":"tag1","tagDescription":"tag1"},{"tagName":"tag2","tagDescription":"tag2"}],"answers":[{"answerId":1,"detail":"answer","votesCount":1,"solutionStatus":false,"comments":[{"commentId":1,"commentDetail":"comment","memberId":1}],"memberId":0}],"createdAt":"2023-06-21T14:55:58.454395","updatedAt":"2023-06-21T14:55:58.454458"},{"questionId":2,"title":"title","detail":"detail","solutionStatus":false,"answerCount":0,"votesCount":0,"viewCount":0,"memberId":2,"tags":[{"tagName":"tag1","tagDescription":"tag1"},{"tagName":"tag2","tagDescription":"tag2"}],"answers":[{"answerId":1,"detail":"answer","votesCount":1,"solutionStatus":false,"comments":[{"commentId":1,"commentDetail":"comment","memberId":1}],"memberId":0}],"createdAt":"2023-06-21T14:55:58.454525","updatedAt":"2023-06-21T14:55:58.454533"}]</code></pre>
+[ {
+  "questionId" : 1,
+  "title" : "title",
+  "detail" : "detail",
+  "solutionStatus" : false,
+  "answerCount" : 0,
+  "votesCount" : 0,
+  "viewCount" : 0,
+  "memberId" : 1,
+  "tags" : [ {
+    "tagName" : "tag1",
+    "tagDescription" : "tag1"
+  }, {
+    "tagName" : "tag2",
+    "tagDescription" : "tag2"
+  } ],
+  "answers" : [ {
+    "answerId" : 1,
+    "detail" : "answer",
+    "votesCount" : 1,
+    "solutionStatus" : false,
+    "comments" : [ {
+      "commentId" : 1,
+      "commentDetail" : "comment",
+      "memberId" : 1
+    } ],
+    "memberId" : 0
+  } ],
+  "createdAt" : "2023-06-21T15:08:23.009183",
+  "updatedAt" : "2023-06-21T15:08:23.009232"
+}, {
+  "questionId" : 2,
+  "title" : "title",
+  "detail" : "detail",
+  "solutionStatus" : false,
+  "answerCount" : 0,
+  "votesCount" : 0,
+  "viewCount" : 0,
+  "memberId" : 2,
+  "tags" : [ {
+    "tagName" : "tag1",
+    "tagDescription" : "tag1"
+  }, {
+    "tagName" : "tag2",
+    "tagDescription" : "tag2"
+  } ],
+  "answers" : [ {
+    "answerId" : 1,
+    "detail" : "answer",
+    "votesCount" : 1,
+    "solutionStatus" : false,
+    "comments" : [ {
+      "commentId" : 1,
+      "commentDetail" : "comment",
+      "memberId" : 1
+    } ],
+    "memberId" : 0
+  } ],
+  "createdAt" : "2023-06-21T15:08:23.009293",
+  "updatedAt" : "2023-06-21T15:08:23.009300"
+} ]</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. response-fields</caption>
+<caption class="title">Table 11. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1284,7 +1379,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. /questions/votes/{questionId}/{memberId}</caption>
+<caption class="title">Table 12. /questions/votes/{questionId}/{memberId}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1322,7 +1417,7 @@ Content-Length: 27
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. response-fields</caption>
+<caption class="title">Table 13. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1381,7 +1476,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. request-fields</caption>
+<caption class="title">Table 14. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1438,7 +1533,7 @@ Content-Length: 243
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. response-fields</caption>
+<caption class="title">Table 15. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1537,7 +1632,7 @@ Host: localhost:8080
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. /answers/{answer-id}</caption>
+<caption class="title">Table 16. /answers/{answer-id}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1556,7 +1651,7 @@ Host: localhost:8080
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. request-fields</caption>
+<caption class="title">Table 17. request-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1613,7 +1708,7 @@ Content-Length: 258
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. response-fields</caption>
+<caption class="title">Table 18. response-fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1686,7 +1781,7 @@ Content-Length: 258
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-06-21 14:55:46 +0900
+Last updated 2023-06-21 15:05:39 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

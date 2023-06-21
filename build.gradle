@@ -13,6 +13,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	asciidoctorExtensions
 }
 
 repositories {
@@ -22,10 +23,10 @@ repositories {
 ext {
 	set('snippetsDir', file("build/generated-snippets"))
 }
-
-configurations {
-	asciidoctorExtensions
-}
+//
+//configurations {
+//
+//}
 
 dependencies {
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc' // API 문서화
@@ -45,14 +46,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+task testWithSnippets(type: Test) {
 	outputs.dir snippetsDir
 	useJUnitPlatform()
 }
+
 tasks.named('asciidoctor') {
-	configurations "asciidoctorExtensions"
+	dependsOn testWithSnippets
 	inputs.dir snippetsDir
-	dependsOn test
 }
 task copyDocument(type: Copy) {
 	dependsOn asciidoctor
