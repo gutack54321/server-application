@@ -145,7 +145,7 @@ public class CommentControllerRestDocsTest {
         patchActions
                 .andExpect(status().isOk())
                 .andDo(document(
-                        "patch-commnet",
+                        "patch-comment",
                         getRequestPreProcessor(),
                         getResponsePreProcessor(),
                         pathParameters(

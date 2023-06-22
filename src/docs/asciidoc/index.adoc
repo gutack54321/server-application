@@ -154,3 +154,51 @@ include::{snippets}/patch-answer/http-response.adoc[]
 .response-fields
 include::{snippets}/patch-answer/response-fields.adoc[]
 
+== AnswerController
+=== 대댓글 등록
+.curl-request
+include::{snippets}/post-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/post-comment/http-request.adoc[]
+
+.request-fields
+include::{snippets}/post-comment/request-fields.adoc[]
+
+.http-response
+include::{snippets}/post-comment/http-response.adoc[]
+
+.response-fields
+include::{snippets}/post-comment/response-fields.adoc[]
+
+=== 대댓글 정보 수정
+.curl-request
+include::{snippets}/patch-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/patch-comment/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/patch-comment/path-parameters.adoc[]
+
+.request-fields
+include::{snippets}/patch-comment/request-fields.adoc[]
+
+.http-response
+include::{snippets}/patch-comment/http-response.adoc[]
+
+.response-fields
+include::{snippets}/patch-comment/response-fields.adoc[]
+
+=== 대댓글 삭제
+.curl-request
+include::{snippets}/delete-comment/curl-request.adoc[]
+
+.http-request
+include::{snippets}/delete-comment/http-request.adoc[]
+
+.path-parameters
+include::{snippets}/delete-comment/path-parameters.adoc[]
+
+.http-response
+include::{snippets}/delete-comment/http-response.adoc[]
